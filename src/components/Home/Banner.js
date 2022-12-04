@@ -1,4 +1,5 @@
 import Button from 'react-bootstrap/Button';
+import { header1, header2, header3, text1, text2, text3 } from '../../data/bannerData';
 
 export default function Banner() {
   return (
@@ -6,16 +7,22 @@ export default function Banner() {
       <div className="banner">
         <div className="container d-flex justify-content-between">
           <div className='banner-card'>
-            <h1 className="big-text text-center">LEARN!</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem provident veritatis, adipisci ipsum, repellendus doloribus molestias dicta ea, animi officiis praesentium a!</p>
+            <h1 className="big-text text-center">
+              {header1}
+            </h1>
+            <p>{text1}</p>
           </div>
           <div className="banner-card mx-5 px-5">
-            <h1 className="big-text text-center">PRACTISE!</h1>
-            <p className="text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos est exercitationem sequi laborum, aperiam corporis. Debitis repudiandae earum tenetur, eaque vero, odit ipsum dolorum voluptatem ut, corrupti iste enim magnam.</p>
+            <h1 className="big-text text-center">
+              {header2}
+            </h1>
+            <p className="text-justify">{text2}</p>
           </div>
           <div className='banner-card'>
-            <h1 className="big-text text-center">COMPETE!</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni expedita natus nesciunt quo quaerat esse provident inventore temporibus odio cum.</p>
+            <h1 className="big-text text-center">
+              {header3}
+            </h1>
+            <p>{text3}</p>
           </div>
         </div>
         <div>
