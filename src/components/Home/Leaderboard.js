@@ -12,30 +12,28 @@ const Trophy = ({ points }) => {
   );
 }
 
+const Leaders = ({ image, position, name, points }) => {
+  return (
+    <>
+      <div className="d-flex justify-content-center align-items-center flex-column position-relative m-3">
+        <img src={image} alt="" />
+        <span className="leader-bronze">{position}</span>
+        <h2>{name}</h2>
+        <Trophy points={points} />
+      </div>
+    </>
+  );
+}
+
 export default function Leaderboard() {
   return (
     <>
       <div className="container py-5 my-5">
         <h2 className="section-header">Leaderbord</h2>
-        <div className="leaderboard d-flex justify-content-around my-5 py-5">
-          <div className="d-flex justify-content-center align-items-center flex-column position-relative">
-            <img src={human1} alt="" />
-            <span className="leader-bronze">2</span>
-            <h2>Cliffin Richard</h2>
-            <Trophy points={"23488"} />
-          </div>
-          <div className="d-flex justify-content-center align-items-center flex-column position-relative">
-            <img src={human2} alt="" />
-            <span className="leader-top">1</span>
-            <h2>Aurora Smith</h2>
-            <Trophy points={"73408"} />
-          </div>
-          <div className="d-flex justify-content-center align-items-center flex-column position-relative">
-            <img src={human3} alt="" />
-            <span className="leader-bronze">3</span>
-            <h2>Parker White</h2>
-            <Trophy points={"13588"} />
-          </div>
+        <div className="leaderboard d-flex justify-content-around my-5 py-5 flex-wrap align-items-center">
+          <Leaders image={human1} position={"2"} name={"Cliffin Richard"} points={"23488"} />
+          <Leaders image={human2} position={"1"} name={"Aurora Smith"} points={"73408"} />
+          <Leaders image={human3} position={"3"} name={"Parker White"} points={"13588"} />
         </div>
         <div className="d-flex justify-content-center pt-3">
           <Button size="lg" variant="dark">View all</Button>

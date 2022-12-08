@@ -4,8 +4,12 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../assets/images/ELITE.png';
+import { useContext } from 'react';
+import { UserContext } from '../../App';
 
 export default function NavScrollBar() {
+  const [popup, setPopup] = useContext(UserContext);
+
   return (
     <Navbar bg="transparent" expand="lg">
       <Container className='container' fluid>
@@ -19,14 +23,25 @@ export default function NavScrollBar() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
+            <Nav.Link className='text-dark' href="/">Home</Nav.Link>
             <Nav.Link href="#action2">Leaderboard</Nav.Link>
             <Nav.Link href="#action2">Contest</Nav.Link>
             <Nav.Link href="#action2">About</Nav.Link>
           </Nav>
           <Form className="d-flex">
-            <Button variant="dark">Sign up</Button>
-            <Button className='ms-2' variant="outline-dark">Log in</Button>
+            <Button
+              variant="dark"
+              onClick={() => setPopup(true)}
+            >
+              Sign up
+            </Button>
+            <Button
+              className='ms-2'
+              variant="outline-dark"
+              onClick={() => setPopup(true)}
+            >
+              Log in
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Container>

@@ -5,6 +5,7 @@ import Contest from "./Contest";
 import Leaderboard from "./Leaderboard";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import LoginModal from "./LoginModal";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Leaderboard />
       <Contact />
       <Footer />
+      <LoginModal />
     </>
   );
 }

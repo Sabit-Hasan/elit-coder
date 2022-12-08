@@ -545,3 +545,9 @@ a:hover {
 .footer-39201 .social li a:hover {
   color: #614ad3;
 }
+
+@media only screen and (max-width: 767px) {
+  .footer-14398 {
+    margin-top: 1000px;
+  }
+}
