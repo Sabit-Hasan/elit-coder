@@ -1,4 +1,5 @@
 import "./Contact.css";
+import { contactData } from "../../data/contactData";
 
 export default function Contact() {
   return (
@@ -57,19 +58,19 @@ export default function Contact() {
             <div className="col-md-4">
               <div className="contact-info h-100">
                 <h3>Contact Information</h3>
-                <p className="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, magnam!</p>
+                <p className="mb-5">{contactData.header}</p>
                 <ul className="list-unstyled">
                   <li className="d-flex">
                     <span className="wrap-icon icon-room mr-3"></span>
-                    <span className="text">9757 Aspen Lane South Richmond Hill, NY 11419</span>
+                    <span className="text">{contactData.address}</span>
                   </li>
                   <li className="d-flex">
                     <span className="wrap-icon icon-phone mr-3"></span>
-                    <span className="text">+1 (291) 939 9321</span>
+                    <span className="text">{contactData.phone}</span>
                   </li>
                   <li className="d-flex">
                     <span className="wrap-icon icon-envelope mr-3"></span>
-                    <span className="text">info@mywebsite.com</span>
+                    <span className="text">{contactData.email}</span>
                   </li>
                 </ul>
               </div>

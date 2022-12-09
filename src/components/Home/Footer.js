@@ -56,10 +56,10 @@ export default function Footer() {
             </div>
             <div className="col-md-6 text-md-right">
               <ul className="list-unstyled social nav-right">
-                <li><a href="#"><span className="icon-twitter"></span></a></li>
-                <li><a href="#"><span className="icon-instagram"></span></a></li>
-                <li><a href="#"><span className="icon-facebook"></span></a></li>
-                <li><a href="#"><span className="icon-pinterest"></span></a></li>
+                <li className="text-light"><a href="#"><i className="fa-brands fa-twitter"></i></a></li>
+                <li className="text-light"><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                <li className="text-light"><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li className="text-light"><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
               </ul>
             </div>
           </div>

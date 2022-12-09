@@ -10,7 +10,6 @@ import LoginModal from "./LoginModal";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Banner />
       <Contest />
       <Leaderboard />

@@ -11,7 +11,7 @@ export default function NavScrollBar() {
   const [popup, setPopup] = useContext(UserContext);
 
   return (
-    <Navbar bg="transparent" expand="lg">
+    <Navbar className='fixed-top' bg="white" expand="lg">
       <Container className='container' fluid>
         <Navbar.Brand href="#">
           <img className='logo' src={logo} alt="" />
@@ -24,9 +24,9 @@ export default function NavScrollBar() {
             navbarScroll
           >
             <Nav.Link className='text-dark' href="/">Home</Nav.Link>
-            <Nav.Link href="#action2">Leaderboard</Nav.Link>
-            <Nav.Link href="#action2">Contest</Nav.Link>
-            <Nav.Link href="#action2">About</Nav.Link>
+            <Nav.Link href="">Leaderboard</Nav.Link>
+            <Nav.Link href="">Contest</Nav.Link>
+            <Nav.Link href="">About</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Button
