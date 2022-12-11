@@ -11,7 +11,6 @@ import SignupModal from "../Login/SignupModal";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Banner />
       <Contest />
       <Leaderboard />
