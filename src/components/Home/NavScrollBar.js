@@ -14,8 +14,7 @@ import { auth } from '../../firebase.config';
 const DropdownMenu = () => {
   const [popup, setPopup, authentication, setAuthentication] = useContext(UserContext);
 
-  const funSignOut = () => {
-    console.log("Signout");
+  const SignOut = () => {
     return (
       signOut(auth).then(() => {
         setAuthentication({
@@ -25,7 +24,7 @@ const DropdownMenu = () => {
           photoUrl: undefined,
         })
       }).catch((error) => {
-        alert("Error");
+        alert(error.message);
       })
     );
   }
@@ -48,7 +47,7 @@ const DropdownMenu = () => {
           <Dropdown.Item href="">Profile</Dropdown.Item>
           <Dropdown.Item href="">Dashboard</Dropdown.Item>
           <Dropdown.Item href="">Settings</Dropdown.Item>
-          <Dropdown.Item onClick={() => funSignOut}>Sign out</Dropdown.Item>
+          <Dropdown.Item onClick={() => SignOut()}>Sign out</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </>

@@ -1,10 +1,97 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Alert from 'react-bootstrap/Alert';
 import { UserContext } from "../../App";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, google, facebook } from "../../firebase.config";
 
 const MyVerticallyCenteredModal = (props) => {
-  const [popup, setPopup] = useContext(UserContext);
+  const [popup, setPopup, authentication, setAuthentication] = useContext(UserContext);
+
+  const [show, setShow] = useState({
+    status: false,
+    msg: ""
+  });
+
+  const emailRef = useRef(null);
+  const passRef = useRef(null);
+
+  const SignInWithEmail = event => {
+    event.preventDefault();
+
+    signInWithEmailAndPassword(auth, emailRef.current.value, passRef.current.value)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        setAuthentication({
+          loggedIn: true,
+          email: user.email,
+          displayName: user.displayName,
+          photoUrl: user.photoURL,
+        });
+
+        setPopup({
+          signup: false,
+          login: false
+        })
+      })
+      .catch((error) => {
+        setShow({
+          status: true,
+          msg: error.message
+        });
+      });
+  }
+
+  const SignInWithGoogle = () => {
+
+    signInWithPopup(auth, google)
+      .then((result) => {
+        const user = result.user;
+        setAuthentication({
+          loggedIn: true,
+          email: user.email,
+          displayName: user.displayName,
+          photoUrl: user.photoURL,
+        });
+
+        setPopup({
+          signup: false,
+          login: false
+        })
+      }).catch((error) => {
+        setShow({
+          status: true,
+          msg: error.message
+        });
+      });
+  }
+
+  const SignInWithFacebook = () => {
+
+    signInWithPopup(auth, facebook)
+      .then((result) => {
+        const user = result.user;
+        setAuthentication({
+          loggedIn: true,
+          email: user.email,
+          displayName: user.displayName,
+          photoUrl: user.photoURL,
+        });
+
+        setPopup({
+          signup: false,
+          login: false
+        })
+      }).catch((error) => {
+        setShow({
+          status: true,
+          msg: error.message
+        });
+      });
+  }
+
   return (
     <Modal
       {...props}
@@ -18,19 +105,19 @@ const MyVerticallyCenteredModal = (props) => {
         <div className="text-center">
           <h2>LOGIN</h2>
           <span>Please enter your email and password!</span>
-          <form className="d-flex flex-column mt-4 custom-form">
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+          <form onSubmit={SignInWithEmail} className="d-flex flex-column mt-4 custom-form">
+            <input type="email" placeholder="Email" ref={emailRef} required />
+            <input type="password" placeholder="Password" ref={passRef} required />
             <label>Forgot password?</label>
             <input type="submit" value="LOGIN" />
           </form>
           <div className="social-login mb-4">
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-google"></i>
+            <i class="fa-brands fa-facebook-f social-icon" onClick={() => SignInWithFacebook()}></i>
+            <i class="fa-brands fa-twitter social-icon"></i>
+            <i class="fa-brands fa-google social-icon" onClick={() => SignInWithGoogle()}></i>
           </div>
           <span>Don't have an account?</span>
-          <span 
+          <span
             className="text-muted ms-1 pointer-cursor"
             onClick={() => setPopup({
               signup: true,
@@ -38,7 +125,14 @@ const MyVerticallyCenteredModal = (props) => {
             })}
           >
             Sign up
-            </span>
+          </span>
+          {
+            show.status && (
+              <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+                <p>{show.msg}</p>
+              </Alert>
+            )
+          }
         </div>
       </Modal.Body>
       <Modal.Footer>

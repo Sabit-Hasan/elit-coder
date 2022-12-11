@@ -3,8 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import Modal from 'react-bootstrap/Modal';
 import { UserContext } from "../../App";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../firebase.config";
+import { createUserWithEmailAndPassword, updateProfile, signInWithPopup } from "firebase/auth";
+import { auth, google, facebook } from "../../firebase.config";
 
 const MyVerticallyCenteredModal = (props) => {
   const [popup, setPopup, authentication, setAuthentication] = useContext(UserContext);
@@ -28,7 +28,7 @@ const MyVerticallyCenteredModal = (props) => {
         updateProfile(auth.currentUser, {
           displayName: nameRef.current.value
         }).then(() => {
-          console.log("PROFILE UPDATED");
+          // console.log("PROFILE UPDATED");
         }).catch((error) => {
           alert(error.errorMessage);
         });
@@ -47,6 +47,53 @@ const MyVerticallyCenteredModal = (props) => {
         })
       })
       .catch((error) => {
+        setShow({
+          status: true,
+          msg: error.message
+        });
+      });
+  }
+
+  const SignInWithGoogle = () => {
+    signInWithPopup(auth, google)
+      .then((result) => {
+        const user = result.user;
+        setAuthentication({
+          loggedIn: true,
+          email: user.email,
+          displayName: user.displayName,
+          photoUrl: user.photoURL,
+        });
+
+        setPopup({
+          signup: false,
+          login: false
+        })
+      }).catch((error) => {
+        setShow({
+          status: true,
+          msg: error.message
+        });
+      });
+  }
+
+  const SignInWithFacebook = () => {
+
+    signInWithPopup(auth, facebook)
+      .then((result) => {
+        const user = result.user;
+        setAuthentication({
+          loggedIn: true,
+          email: user.email,
+          displayName: user.displayName,
+          photoUrl: user.photoURL,
+        });
+
+        setPopup({
+          signup: false,
+          login: false
+        })
+      }).catch((error) => {
         setShow({
           status: true,
           msg: error.message
@@ -74,9 +121,9 @@ const MyVerticallyCenteredModal = (props) => {
             <input className="mt-3" type="submit" value="CREATE" />
           </form>
           <div className="social-login mb-4">
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-google"></i>
+            <i class="fa-brands fa-facebook-f social-icon" onClick={() => SignInWithFacebook()}></i>
+            <i class="fa-brands fa-twitter social-icon"></i>
+            <i class="fa-brands fa-google social-icon" onClick={() => SignInWithGoogle()}></i>
           </div>
           <span>Already have account?</span>
           <span
@@ -98,7 +145,7 @@ const MyVerticallyCenteredModal = (props) => {
         </div>
       </Modal.Body>
       <Modal.Footer>
-      <Button onClick={props.onHide}>Close</Button>
+        <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
   );

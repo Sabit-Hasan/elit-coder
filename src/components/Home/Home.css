@@ -186,6 +186,14 @@
   cursor: pointer;
 }
 
+.social-icon {
+  cursor: pointer;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
 /* ------------------------------ NAVBAR */
 
 .avatar-nav {
