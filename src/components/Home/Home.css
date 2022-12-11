@@ -155,7 +155,7 @@
   align-items: center;
 }
 
-.custom-form > input[type="email"], input[type="password"] {
+.custom-form > input[type="email"], input[type="password"], input[type="text"] {
   border: 1.5px solid black;
   border-radius: 4px;
   padding: 6px 15px;
@@ -180,4 +180,17 @@
   font-size: 20px;
   margin: 0 10px;
   font-weight: bold;
+}
+
+.pointer-cursor {
+  cursor: pointer;
+}
+
+/* ------------------------------ NAVBAR */
+
+.avatar-nav {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-left: 10px;
 }

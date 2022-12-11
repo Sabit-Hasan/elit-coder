@@ -5,7 +5,8 @@ import Contest from "./Contest";
 import Leaderboard from "./Leaderboard";
 import Contact from "./Contact";
 import Footer from "./Footer";
-import LoginModal from "./LoginModal";
+import LoginModal from "../Login/LoginModal";
+import SignupModal from "../Login/SignupModal";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Contact />
       <Footer />
       <LoginModal />
+      <SignupModal />
     </>
   );
 }

@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { UserContext } from "../../App";
 
 const MyVerticallyCenteredModal = (props) => {
+  const [popup, setPopup] = useContext(UserContext);
   return (
     <Modal
       {...props}
@@ -16,7 +17,7 @@ const MyVerticallyCenteredModal = (props) => {
       <Modal.Body>
         <div className="text-center">
           <h2>LOGIN</h2>
-          <span>Please enter your login and password!</span>
+          <span>Please enter your email and password!</span>
           <form className="d-flex flex-column mt-4 custom-form">
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
@@ -29,7 +30,15 @@ const MyVerticallyCenteredModal = (props) => {
             <i class="fa-brands fa-google"></i>
           </div>
           <span>Don't have an account?</span>
-          <span className="text-muted ms-1">Sign up</span>
+          <span 
+            className="text-muted ms-1 pointer-cursor"
+            onClick={() => setPopup({
+              signup: true,
+              login: false
+            })}
+          >
+            Sign up
+            </span>
         </div>
       </Modal.Body>
       <Modal.Footer>
@@ -45,8 +54,11 @@ export default function LoginModal() {
   return (
     <>
       <MyVerticallyCenteredModal
-        show={popup}
-        onHide={() => setPopup(false)}
+        show={popup.login}
+        onHide={() => setPopup({
+          signup: false,
+          login: false
+        })}
       />
     </>
   );

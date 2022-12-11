@@ -2,14 +2,61 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
+import Dropdown from 'react-bootstrap/Dropdown';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../assets/images/ELITE.png';
+import avatar from '../../assets/images/man.png';
 import { useContext } from 'react';
 import { UserContext } from '../../App';
+import { signOut } from "firebase/auth";
+import { auth } from '../../firebase.config';
+
+const DropdownMenu = () => {
+  const [popup, setPopup, authentication, setAuthentication] = useContext(UserContext);
+
+  const funSignOut = () => {
+    console.log("Signout");
+    return (
+      signOut(auth).then(() => {
+        setAuthentication({
+          loggedIn: false,
+          email: undefined,
+          displayName: undefined,
+          photoUrl: undefined,
+        })
+      }).catch((error) => {
+        alert("Error");
+      })
+    );
+  }
+
+  return (
+    <>
+      <Dropdown>
+        <Dropdown.Toggle variant="white" id="dropdown-basic">
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <Dropdown.Item className='d-flex align-items-center' href="">
+            <img className='avatar-nav' src={avatar} alt="" />
+            <div className='d-flex flex-column ms-2 text-sm'>
+              <span className='fw-bold'>{authentication.displayName}</span>
+              <span className='text-muted'>{authentication.email}</span>
+            </div>
+          </Dropdown.Item>
+          <hr />
+          <Dropdown.Item href="">Profile</Dropdown.Item>
+          <Dropdown.Item href="">Dashboard</Dropdown.Item>
+          <Dropdown.Item href="">Settings</Dropdown.Item>
+          <Dropdown.Item onClick={() => funSignOut}>Sign out</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+    </>
+  );
+}
 
 export default function NavScrollBar() {
-  const [popup, setPopup] = useContext(UserContext);
-
+  const [popup, setPopup, authentication, setAuthentication] = useContext(UserContext);
   return (
     <Navbar bg="transparent" expand="lg">
       <Container className='container' fluid>
@@ -28,21 +75,41 @@ export default function NavScrollBar() {
             <Nav.Link href="#action2">Contest</Nav.Link>
             <Nav.Link href="#action2">About</Nav.Link>
           </Nav>
-          <Form className="d-flex">
-            <Button
-              variant="dark"
-              onClick={() => setPopup(true)}
-            >
-              Sign up
-            </Button>
-            <Button
-              className='ms-2'
-              variant="outline-dark"
-              onClick={() => setPopup(true)}
-            >
-              Log in
-            </Button>
-          </Form>
+          {
+            authentication.loggedIn ? (
+              <>
+                <div className='d-flex align-items-center'>
+                  <span className='fw-bold'><i class="fa-solid fa-trophy"></i> 2300</span>
+                  <img className='avatar-nav' src={avatar} alt="" />
+                  <DropdownMenu />
+                </div>
+              </>
+            ) : (
+              <>
+                <Form className="d-flex">
+                  <Button
+                    variant="dark"
+                    onClick={() => setPopup({
+                      signup: true,
+                      login: false
+                    })}
+                  >
+                    Sign up
+                  </Button>
+                  <Button
+                    className='ms-2'
+                    variant="outline-dark"
+                    onClick={() => setPopup({
+                      signup: false,
+                      login: true
+                    })}
+                  >
+                    Log in
+                  </Button>
+                </Form>
+              </>
+            )
+          }
         </Navbar.Collapse>
       </Container>
     </Navbar>
