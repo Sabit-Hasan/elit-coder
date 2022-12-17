@@ -70,8 +70,9 @@ export default function NavScrollBar() {
             navbarScroll
           >
             <Nav.Link className='text-dark' href="/">Home</Nav.Link>
-            <Nav.Link href="">Leaderboard</Nav.Link>
-            <Nav.Link href="">Contest</Nav.Link>
+            <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+            <Nav.Link href="/leaderBoard">Leaderboard</Nav.Link>
+            <Nav.Link href="/contest">Contest</Nav.Link>
             <Nav.Link href="">About</Nav.Link>
           </Nav>
           {

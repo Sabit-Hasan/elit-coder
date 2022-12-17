@@ -1,0 +1,10 @@
+.inner-leaderBoard {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+/* .table-section {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+} */
