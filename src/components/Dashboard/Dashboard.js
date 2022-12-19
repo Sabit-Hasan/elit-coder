@@ -1,7 +1,10 @@
 export default function Dashboard() {
   return (
     <>
-      <h1>DASHBOARD</h1>
+      <div className="container">
+        <h1>Dashboard</h1>
+        <h4>Delete the codes and start by using container bootstrap class</h4>
+      </div>
     </>
   );
 }
