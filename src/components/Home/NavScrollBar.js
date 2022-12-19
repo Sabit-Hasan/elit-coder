@@ -44,9 +44,9 @@ const DropdownMenu = () => {
             </div>
           </Dropdown.Item>
           <hr />
-          <Dropdown.Item href="">Profile</Dropdown.Item>
-          <Dropdown.Item href="">Dashboard</Dropdown.Item>
-          <Dropdown.Item href="">Settings</Dropdown.Item>
+          <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+          <Dropdown.Item href="/dashboard">Dashboard</Dropdown.Item>
+          <Dropdown.Item href="/settings">Settings</Dropdown.Item>
           <Dropdown.Item onClick={() => SignOut()}>Sign out</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
@@ -70,7 +70,6 @@ export default function NavScrollBar() {
             navbarScroll
           >
             <Nav.Link className='text-dark' href="/">Home</Nav.Link>
-            <Nav.Link href="/dashboard">Dashboard</Nav.Link>
             <Nav.Link href="/leaderBoard">Leaderboard</Nav.Link>
             <Nav.Link href="/contest">Contest</Nav.Link>
             <Nav.Link href="">About</Nav.Link>
