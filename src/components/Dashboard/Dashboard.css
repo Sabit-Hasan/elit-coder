@@ -52,7 +52,7 @@
 }
 
 /* ----------------------------------------------- QUES UPLOAD */
-form>input[type=button] {
+form>input[type=submit] {
   background-color: black;
   color: white;
   padding: 8px;

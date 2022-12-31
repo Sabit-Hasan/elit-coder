@@ -88,7 +88,7 @@ export default function NavScrollBar() {
               <>
                 <div className='d-flex align-items-center'>
                   <span className='fw-bold'><i class="fa-solid fa-trophy"></i> 2300</span>
-                  <img className='avatar-nav' src={authentication.photoUrl} alt="" />
+                  <img className='avatar-nav' src={authentication.photoUrl ? authentication.photoUrl : avatar} alt="" />
                   <DropdownMenu />
                 </div>
               </>
