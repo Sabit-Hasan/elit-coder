@@ -21,6 +21,8 @@ export default function App() {
     photoUrl: undefined,
   })
 
+  const [currNav, setCurrNav] = useState("");
+
   return (
     <UserContext.Provider value={[popup, setPopup, authentication, setAuthentication]}>
       <BrowserRouter>

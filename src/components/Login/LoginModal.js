@@ -19,7 +19,6 @@ const MyVerticallyCenteredModal = (props) => {
 
   const SignInWithEmail = event => {
     event.preventDefault();
-
     signInWithEmailAndPassword(auth, emailRef.current.value, passRef.current.value)
       .then((userCredential) => {
         // Signed in
@@ -45,7 +44,6 @@ const MyVerticallyCenteredModal = (props) => {
   }
 
   const SignInWithGoogle = () => {
-
     signInWithPopup(auth, google)
       .then((result) => {
         const user = result.user;
@@ -69,7 +67,6 @@ const MyVerticallyCenteredModal = (props) => {
   }
 
   const SignInWithFacebook = () => {
-
     signInWithPopup(auth, facebook)
       .then((result) => {
         const user = result.user;
@@ -144,7 +141,6 @@ const MyVerticallyCenteredModal = (props) => {
 
 export default function LoginModal() {
   const [popup, setPopup] = useContext(UserContext);
-
   return (
     <>
       <MyVerticallyCenteredModal

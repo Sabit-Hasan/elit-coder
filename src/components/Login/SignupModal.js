@@ -18,7 +18,6 @@ const MyVerticallyCenteredModal = (props) => {
 
   const emailSignIn = event => {
     event.preventDefault();
-
     createUserWithEmailAndPassword(auth, emailRef.current.value, passRef.current.value)
       .then(userCredential => {
         // Signed in 
@@ -64,7 +63,7 @@ const MyVerticallyCenteredModal = (props) => {
           displayName: user.displayName,
           photoUrl: user.photoURL,
         });
-
+        
         setPopup({
           signup: false,
           login: false
@@ -78,7 +77,6 @@ const MyVerticallyCenteredModal = (props) => {
   }
 
   const SignInWithFacebook = () => {
-
     signInWithPopup(auth, facebook)
       .then((result) => {
         const user = result.user;
@@ -153,7 +151,6 @@ const MyVerticallyCenteredModal = (props) => {
 
 export default function SignupModal() {
   const [popup, setPopup] = useContext(UserContext);
-
   return (
     <>
       <MyVerticallyCenteredModal

@@ -10,6 +10,7 @@ import { useContext } from 'react';
 import { UserContext } from '../../App';
 import { signOut } from "firebase/auth";
 import { auth } from '../../firebase.config';
+import { Link } from 'react-router-dom';
 
 const DropdownMenu = () => {
   const [popup, setPopup, authentication, setAuthentication] = useContext(UserContext);
@@ -37,7 +38,7 @@ const DropdownMenu = () => {
 
         <Dropdown.Menu>
           <Dropdown.Item className='d-flex align-items-center' href="">
-            <img className='avatar-nav' src={avatar} alt="" />
+            <img className='avatar-nav' src={authentication.photoUrl ? authentication.photoUrl : avatar} alt="" />
             <div className='d-flex flex-column ms-2 text-sm'>
               <span className='fw-bold'>{authentication.displayName}</span>
               <span className='text-muted'>{authentication.email}</span>
@@ -45,8 +46,16 @@ const DropdownMenu = () => {
           </Dropdown.Item>
           <hr />
           <Dropdown.Item href="/profile">Profile</Dropdown.Item>
-          <Dropdown.Item href="/dashboard">Dashboard</Dropdown.Item>
-          <Dropdown.Item href="/settings">Settings</Dropdown.Item>
+          <Dropdown.Item>
+            {
+              <Link to="/dashboard" style={{ color: '#1E2125' }}>Dashboard</Link>
+            }
+          </Dropdown.Item>
+          <Dropdown.Item href="/settings">
+            {
+              <Link to="/" style={{ color: '#1E2125' }}>Settings</Link>
+            }
+          </Dropdown.Item>
           <Dropdown.Item onClick={() => SignOut()}>Sign out</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
@@ -79,7 +88,7 @@ export default function NavScrollBar() {
               <>
                 <div className='d-flex align-items-center'>
                   <span className='fw-bold'><i class="fa-solid fa-trophy"></i> 2300</span>
-                  <img className='avatar-nav' src={avatar} alt="" />
+                  <img className='avatar-nav' src={authentication.photoUrl} alt="" />
                   <DropdownMenu />
                 </div>
               </>

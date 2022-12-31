@@ -1,0 +1,59 @@
+/* ----------------------------------------------- SIDEBAR */
+.sidebar {
+  background-color: #000;
+  width: 13.3rem;
+  height: 87.4vh;
+}
+
+.side-nav-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  padding: 15px 0px;
+  border-bottom: 2px solid #fff;
+}
+
+.side-profile-img {
+  height: 4rem;
+  width: 4rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+.side-profile-email {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.side-nav-body {
+  padding: 20px 0px;
+}
+
+.side-nav-links {
+  list-style: none;
+}
+
+.side-nav-link {
+  display: block;
+  padding: 5px 0px;
+}
+
+
+.side-nav-item {
+  text-decoration: none;
+  color: #fff;
+}
+
+.side-nav-item:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* ----------------------------------------------- QUES UPLOAD */
+form>input[type=button] {
+  background-color: black;
+  color: white;
+  padding: 8px;
+}
